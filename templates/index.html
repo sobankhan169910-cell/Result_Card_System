@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Student Result Card System</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eeeeee;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .form-box {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 25px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 11px;
+            margin: 6px 0 15px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+        }
+
+        .subject {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .subject label {
+            width: 220px;
+        }
+
+        .subject input {
+            margin: 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            background: #222;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .result-card {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border: 2px solid black;
+        }
+
+        .board-title {
+            text-align: center;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .exam-title {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 17px;
+        }
+
+        .result-title {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 15px;
+        }
+
+        .student-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            padding: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        .summary {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid black;
+        }
+
+        .summary div {
+            padding: 12px;
+            text-align: center;
+            border-right: 1px solid black;
+        }
+
+        .print-btn {
+            width: 150px;
+            display: block;
+            margin: 20px auto 0;
+        }
+
+        @media print {
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .form-box {
+                display: none;
+            }
+
+            .result-card {
+                margin: 0;
+                border: 2px solid black;
+            }
+
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= FORM ================= -->
+
+    <div class="form-box">
+
+        <h1>Student Result Card System</h1>
+
+        <form method="POST">
+
+            <label>Student Name</label>
+            <input type="text" name="name" placeholder="Enter student name" required>
+
+
+            <label>Father Name</label>
+            <input type="text" name="father_name" placeholder="Enter father name" required>
+
+
+            <label>Roll Number</label>
+            <input type="text" name="roll_no" placeholder="Enter roll number" required>
+
+
+            <label>Class</label>
+            <input type="text" name="student_class" placeholder="e.g. 10th / 1st Year" required>
+
+
+            <label>School / College</label>
+
+            <select name="institution_type" required>
+
+                <option value="">
+                    Select
+                </option>
+
+                <option value="School">
+                    School
+                </option>
+
+                <option value="College">
+                    College
+                </option>
+
+            </select>
+
+
+            <label>School / College Name</label>
+
+            <input type="text" name="institution_name" placeholder="Enter institution name" required>
+
+
+            <h2>Enter Marks</h2>
+
+
+            <!-- English -->
+
+            <div class="subject">
+
+                <label>English</label>
+
+                <input type="number" name="english" placeholder="Marks" min="0" max="100" required>
+
+            </div>
+
+
+            <!-- Urdu -->
+
+            <div class="subject">
+
+                <label>Urdu</label>
+
+                <input type="number" name="urdu" placeholder="Marks" min="0" max="100" required>
+
+            </div>
+
+
+            <!-- Mathematics -->
+
+            <div class="subject">
+
+                <label>Mathematics</label>
+
+                <input type="number" name="math" placeholder="Marks" min="0" max="100" required>
+
+            </div>
+
+
+            <!-- Physics -->
+
+            <div class="subject">
+
+                <label>Physics</label>
+
+                <input type="number" name="physics" placeholder="Marks" min="0" max="100" required>
+
+            </div>
+
+
+            <!-- Computer -->
+
+            <div class="subject">
+
+                <label>Computer Science</label>
+
+                <input type="number" name="computer" placeholder="Marks" min="0" max="100" required>
+
+            </div>
+
+
+            <!-- Islamiat -->
+
+            <div class="subject">
+
+                <label>Islamiat</label>
+
+                <input type="number" name="islamiat" placeholder="Marks" min="0" max="100" required>
+
+            </div>
+
+
+            <button type="submit">
+                Add Student & Generate Result
+            </button>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- ================= RESULT CARDS ================= -->
+
+    {% for student in students %}
+
+    <div class="result-card">
+
+
+        <div class="board-title">
+
+            PEPPERDINE FOR ADVANCED STUDIES
+
+        </div>
+
+
+        <div class="exam-title">
+
+            {{ student.institution_type.upper() }}
+            EXAMINATION
+
+        </div>
+
+
+        <div class="result-title">
+
+            RESULT CARD
+
+        </div>
+
+
+        <!-- Student Information -->
+
+        <div class="student-info">
+
+            <div class="info">
+
+                <b>Student Name:</b>
+                {{ student.name }}
+
+            </div>
+
+
+            <div class="info">
+
+                <b>Roll No:</b>
+                {{ student.roll_no }}
+
+            </div>
+
+
+            <div class="info">
+
+                <b>Father Name:</b>
+                {{ student.father_name }}
+
+            </div>
+
+
+            <div class="info">
+
+                <b>Class:</b>
+                {{ student.class }}
+
+            </div>
+
+
+            <div class="info">
+
+                <b>Institution:</b>
+                {{ student.institution_name }}
+
+            </div>
+
+        </div>
+
+
+        <!-- Marks Table -->
+
+        <table>
+
+            <tr>
+
+                <th>S.#</th>
+
+                <th>SUBJECT / PAPER</th>
+
+                <th>MAX MARKS</th>
+
+                <th>MARKS OBTAINED</th>
+
+            </tr>
+
+
+            {% for subject in subjects %}
+
+            <tr>
+
+                <td>
+                    {{ loop.index }}
+                </td>
+
+                <td>
+                    {{ subject }}
+                </td>
+
+                <td>
+                    100
+                </td>
+
+                <td>
+                    {{ student.marks[loop.index0] }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+
+        <!-- Summary -->
+
+        <div class="summary">
+
+            <div>
+
+                <b>Total Marks</b>
+
+                <br>
+
+                {{ student.total_marks }}
+
+            </div>
+
+
+            <div>
+
+                <b>Obtained Marks</b>
+
+                <br>
+
+                {{ student.obtained_marks }}
+
+            </div>
+
+
+            <div>
+
+                <b>Percentage</b>
+
+                <br>
+
+                {{ student.percentage }}%
+
+            </div>
+
+
+            <div>
+
+                <b>Result</b>
+
+                <br>
+
+                {{ student.result }}
+
+            </div>
+
+        </div>
+
+
+        <button class="print-btn" onclick="window.print()">
+            Print Result
+        </button>
+
+
+    </div>
+
+    {% endfor %}
+
+
+</body>
+
+</html>

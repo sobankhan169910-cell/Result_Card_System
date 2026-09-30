@@ -1,0 +1,5 @@
+login page 
+accept user&password
+session store
+redirect welcome page
+layout
